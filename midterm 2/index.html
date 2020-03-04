@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Open Library Books</title>
+        <link rel="stylesheet" href="app.css" type="text/css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <div class="jumbotron">
+                <!--Query-->
+                <h1>Open Library</h1>
+                <p>Please enter the ISBN of the book you'd like to retrieve</p>
+                <br>
+                <form>
+                    <label class="col-sm-2">ISBN</label>
+                    <input class="col-sm-4" id="num" type="text" name="num">
+                    <button id="button" type="submit">Query</button>
+                </form>
+            </div>
+            <!--Result-->
+            <div class="flex-container"></div>
+            <script>
+                $("#button").on("click",function() {
+                    var bibkeys = "&ISBN: " + $('#num').val();
+                    var jscmd;
+                    $.ajax({
+                        method: "GET",
+                        url: "https://openlibrary.org/api/books" + bibkeys,
+                        dataType: "json",
+                        success: function(data){
+                            if(jscmd == data){
+                                jscmd.cover.forEach(function(result){
+                                    var elm = "<img src=" + result + ">";
+                                    $(".flex-container").append(elm);
+                                });
+                            }
+                        }
+                    });
+                });
+            </script>
+        </div>
+    </body>
+</html>
