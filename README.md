@@ -5,10 +5,10 @@ Question 1:
   b. Padding is the transparent, surrounding area around the content. On the other hand, margin is the actual distance between    other tags and elements. <br>
 Question 2:
   a. "!==" the double equals here only checks for value differences, whereas the triple equals here "!===" checks for both        value and data type. Both of which have an "!" meaning "not".
-  b. The value of statement is false.
+  b. The value of statement is false. <br>
  Question 3:
   [1, 2]
-  [1, 2]
+  [1, 2] <br>
  Question 4:
   Documents
     |
